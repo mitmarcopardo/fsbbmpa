@@ -3,8 +3,8 @@
 //import mongoose from 'mongoose';
 import { MongoClient, ServerApiVersion } from 'mongodb';
 
-//const uri = "mongodb://164.92.85.169/27017";
-const uri = "mongodb://localhost/27017";
+const uri = "mongodb://164.92.85.169/27017";
+//const uri = "mongodb://localhost/27017";
 //const uri = "mongodb+srv://pardovmarco:8RpH0ODRSpjsBDkw@cluster0.bs2zqyr.mongodb.net/?retryWrites=true&w=majority";
 
 // Create a MongoClient with a MongoClientOptions object to set the Stable API version
