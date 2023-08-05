@@ -8,7 +8,10 @@ import cors from 'cors';
 
 const app = express();
 app.use(express.static('public'));
-app.use(cors());
+app.use(cors
+  ({
+    origin: '143.110.229.65:3001',
+  }));
 // Have Node serve the files for our built React app
 // app.use(express.static(path.resolve(__dirname, '../client/build')));
 
