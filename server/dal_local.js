@@ -3,7 +3,7 @@
 //import mongoose from 'mongoose';
 import { MongoClient, ServerApiVersion } from 'mongodb';
 
-const uri = "mongodb://164.92.85.169/27017";
+const uri = "mongodb://164.92.85.169/27017/&ssl=false";
 //const uri = "mongodb://localhost/27017";
 //const uri = "mongodb+srv://pardovmarco:8RpH0ODRSpjsBDkw@cluster0.bs2zqyr.mongodb.net/?retryWrites=true&w=majority";
 
@@ -13,10 +13,6 @@ const client = new MongoClient(uri, {
     version: ServerApiVersion.v1,
     strict: true,
     deprecationErrors: true,
-    ssl: {
-      rejectUnauthorized: false,
-      ca: process.env.CACERT,
-    }
   }
 });
 
