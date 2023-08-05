@@ -3,9 +3,9 @@
 //import mongoose from 'mongoose';
 import { MongoClient, ServerApiVersion } from 'mongodb';
 
-const uri = "mongodb://164.92.85.169/27017/&ssl=false";
+//const uri = "mongodb://164.92.85.169/27017/&ssl=false";
 //const uri = "mongodb://localhost/27017";
-//const uri = "mongodb+srv://pardovmarco:8RpH0ODRSpjsBDkw@cluster0.bs2zqyr.mongodb.net/?retryWrites=true&w=majority";
+const uri = "mongodb+srv://pardovmarco:8RpH0ODRSpjsBDkw@cluster0.bs2zqyr.mongodb.net/?retryWrites=true&w=majority";
 
 // Create a MongoClient with a MongoClientOptions object to set the Stable API version
 const client = new MongoClient(uri, {
@@ -33,7 +33,7 @@ run().catch(console.dir);
 export async function createUser( name, email, password, sudo ) {
     try {
         const client = new MongoClient(uri);
-        const database = client.db("27017");
+        const database = client.db("myProject");
         const collection = database.collection("users");
         // create a document to insert
         const doc = {"name":name, "email":email, "password": password, "balance" : 0, "admin" : sudo};
@@ -50,7 +50,7 @@ export async function createUser( name, email, password, sudo ) {
 
     await client.connect();
 // Cambiar "myProject" a 27017 para mongo in the cloud
-    const allUsers = await client.db('27017').collection('users').find({}, {projection:{ _id: 0 }}).toArray();
+    const allUsers = await client.db('myProject').collection('users').find({}, {projection:{ _id: 0 }}).toArray();
 
 
     if (allUsers){
@@ -67,7 +67,7 @@ export async function search(email){
 
   client.connect();
 
-  const result   = await client.db("27017").collection("users").find(
+  const result   = await client.db("myProject").collection("users").find(
     { email:email },
     { projection:{ _id: 0, name: 0, balance:0, admin:0 } },
   ).toArray();
@@ -87,7 +87,7 @@ export async function login(email){
 
   client.connect();
 
-  const result   = await client.db("27017").collection("users").find(
+  const result   = await client.db("myProject").collection("users").find(
     { email:email },
     { projection:{ _id: 0 } },
   ).toArray();
@@ -107,7 +107,7 @@ export async function update( email, balance) {
       const client = new MongoClient(uri);
       client.connect();
       // Update a document a document to insert
-      const result = await client.db("27017").collection("users").updateOne( {email:email} , { $set: {balance : balance} } );
+      const result = await client.db("myProject").collection("users").updateOne( {email:email} , { $set: {balance : balance} } );
       console.log(`Updated as: ${result.modifiedCount}`)
       return result;
   } finally {
@@ -120,7 +120,7 @@ export async function balance(email){
 
   client.connect();
 
-  const result   = await client.db("27017").collection("users").find(
+  const result   = await client.db("myProject").collection("users").find(
     { email:email },
     { projection:{ _id: 0, name: 0, email: 0, password:0, admin:0 } },
   ).toArray();
