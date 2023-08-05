@@ -8,13 +8,7 @@ import { MongoClient, ServerApiVersion } from 'mongodb';
 const uri = "mongodb+srv://pardovmarco:8RpH0ODRSpjsBDkw@cluster0.bs2zqyr.mongodb.net/?retryWrites=true&w=majority";
 
 // Create a MongoClient with a MongoClientOptions object to set the Stable API version
-const client = new MongoClient(uri, {
-  serverApi: {
-    version: ServerApiVersion.v1,
-    strict: true,
-    deprecationErrors: true,
-  }
-}, { useUnifiedTopology: true });
+const client = new MongoClient(uri, { useUnifiedTopology: true });
 
 async function run() {
   try {
