@@ -14,7 +14,7 @@ const client = new MongoClient(uri, {
     strict: true,
     deprecationErrors: true,
   }
-});
+}, { useUnifiedTopology: true });
 
 async function run() {
   try {
